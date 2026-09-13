@@ -1,140 +1,93 @@
-# SpendWise - Student Expense Tracker
+# SpendWise - Student Expense Tracker 💸
 
 "Take control of your money, one expense at a time."
 
-SpendWise is a modern, production-quality SaaS dashboard application designed to help students track their expenses, set budgets, and gain financial insights. 
-
-Built with the MERN stack (MySQL, Express, React, Node) replacing MongoDB with MySQL via Prisma.
-
-## Features
-
-- **Dashboard**: High-level overview of total spent, budget remaining, daily average, and visual charts.
-- **Transactions**: Track all expenses, search, filter by category, and delete entries.
-- **Budgeting**: Set monthly budgets and individual category budgets with color-coded progress bars.
-- **Analytics**: Deep dive into spending trends, monthly comparisons, and financial insights.
-- **Dark Mode**: Native, beautiful dark mode support.
-- **Authentication**: JWT-based secure authentication.
-- **Responsive**: Works perfectly on Desktop, Tablet, and Mobile.
-
-## Tech Stack
-
-### Frontend
-- React.js (Vite)
-- TypeScript
-- Tailwind CSS
-- shadcn/ui inspired components
-- Lucide React icons
-- Recharts for data visualization
-- React Router DOM
-- React Hook Form + Zod validation
-
-### Backend
-- Node.js
-- Express.js
-- TypeScript
-- Prisma ORM
-- MySQL Database
-- JWT Auth & bcrypt
+SpendWise is a beautiful, modern full-stack web application designed to help you track your expenses, set budgets, and gain financial insights through interactive charts.
 
 ---
 
-## Installation & Setup
+## 🚀 Quick Start Guide
 
-### Prerequisites
-- Node.js (v18+)
-- MySQL Server (running locally on port 3306)
+Follow these step-by-step instructions to get the project running on your local machine.
 
-### 1. Database Setup
-Ensure you have MySQL installed and running. Create the database:
-```sql
-CREATE DATABASE spendwise;
+### Step 1: Prerequisites
+Before you begin, ensure you have the following installed on your computer:
+1. **Node.js** (v18 or higher) - [Download here](https://nodejs.org/)
+2. **MySQL** (using XAMPP, WAMP, or standalone MySQL Server) - [Download XAMPP here](https://www.apachefriends.org/index.html)
+3. **Git** - [Download here](https://git-scm.com/)
+
+### Step 2: Database Setup
+1. Open your **XAMPP Control Panel** (or your preferred MySQL manager) and start the **MySQL** service.
+2. Open your MySQL client (like phpMyAdmin at `http://localhost/phpmyadmin` or MySQL Workbench).
+3. Create a new empty database named `spendwise`:
+   ```sql
+   CREATE DATABASE spendwise;
+   ```
+
+### Step 3: Clone the Repository
+Open your terminal (Command Prompt, PowerShell, or Git Bash) and run:
+```bash
+git clone https://github.com/Abhi37231/spendwise.git
+cd spendwise
 ```
 
-### 2. Backend Setup
-Navigate to the `backend` directory and set up the environment:
-
+### Step 4: Backend Setup
+Open a new terminal window inside the `spendwise` folder and run:
 ```bash
 cd backend
 npm install
 ```
 
-Create a `.env` file in the `backend` directory based on `.env.example`:
-```env
-DATABASE_URL="mysql://root:password@localhost:3306/spendwise"
-JWT_SECRET="your_super_secret_jwt_key"
-PORT=5000
-CLIENT_URL="http://localhost:5173"
-```
+Next, create the environment variables file:
+1. Inside the `backend` folder, duplicate the `.env.example` file and rename the copy to `.env`.
+2. Open `.env` and ensure the database credentials match your local MySQL setup (XAMPP default username is usually `root` with a blank password):
+   ```env
+   # Example for XAMPP (no password):
+   DATABASE_URL="mysql://root:@localhost:3306/spendwise"
+   
+   # Or if you have a password:
+   # DATABASE_URL="mysql://root:yourpassword@localhost:3306/spendwise"
+   ```
 
-Push the database schema (this generates the tables):
+Now, initialize the database tables using Prisma:
 ```bash
 npx prisma db push
 ```
 
-Start the backend server in development mode:
+Finally, start the backend server:
 ```bash
 npm run dev
-# The server will run on http://localhost:5000
 ```
+*(The backend should now be running on `http://localhost:5000`)*
 
-*Note: Update the package.json scripts with `"dev": "nodemon src/server.ts"` if not present.*
-
-### 3. Frontend Setup
-Navigate to the `frontend` directory:
-
+### Step 5: Frontend Setup
+Open a **second** terminal window inside the root `spendwise` folder and run:
 ```bash
 cd frontend
 npm install
 ```
 
-Start the frontend development server:
+Start the frontend server:
 ```bash
 npm run dev
-# The app will open on http://localhost:5173
 ```
+*(The frontend should now be running on `http://localhost:5173`)*
 
 ---
 
-## API Documentation
+## 🎉 You're Done!
+Open your browser and navigate to **`http://localhost:5173`**.
 
-### Authentication
-- `POST /api/auth/register` - Register a new user
-- `POST /api/auth/login` - Login and get JWT token
-- `GET /api/auth/me` - Get current user profile (Protected)
-
-### Expenses
-- `GET /api/expenses` - Get all expenses (Protected)
-- `GET /api/expenses/:id` - Get specific expense (Protected)
-- `POST /api/expenses` - Create expense (Protected)
-- `PUT /api/expenses/:id` - Update expense (Protected)
-- `DELETE /api/expenses/:id` - Delete expense (Protected)
-
-### Budgets
-- `GET /api/budget` - Get monthly budget (Protected)
-- `POST /api/budget` - Create/Update monthly budget (Protected)
-- `GET /api/budget/categories` - Get category budgets (Protected)
-- `POST /api/budget/categories` - Update category budget (Protected)
-
-### Analytics
-- `GET /api/analytics/summary` - Get summary data (Protected)
-- `GET /api/analytics/categories` - Get category breakdown (Protected)
-- `GET /api/analytics/monthly` - Get monthly trend data (Protected)
+**Testing the App:**
+1. Click **Get Started** to create a new account.
+2. Go to the **Budget** tab and set a monthly budget (e.g., 5000).
+3. Go to the **Add Expense** tab and log a few test transactions.
+4. Visit your **Dashboard** and **Analytics** to see the interactive charts come to life with your data!
 
 ---
 
-## Screenshots & Demo Data
-
-When you first launch the app, create a new account via the Register page.
-To see the full potential of the dashboard:
-1. Go to "Budget" and set a monthly budget (e.g., 5000).
-2. Go to "Add Expense" and add 5-10 expenses across different categories (Food, Travel, Education) and different dates.
-3. Visit the Dashboard and Analytics pages to view the generated charts and insights.
-
----
-
-## Design Choices
-- **UI/UX**: Custom components built with Tailwind CSS, inspired by `shadcn/ui`, to maintain full control over the styling and avoid boilerplate.
-- **State**: React Context API for global states like Auth and Theme, avoiding the overhead of Redux.
-- **Validation**: Zod + React Hook Form provides a type-safe, seamless client-side validation experience.
-
-© 2026 SpendWise. All rights reserved.
+## 🛠 Tech Stack
+- **Frontend**: React.js (Vite), TypeScript, Tailwind CSS v4, Recharts
+- **Backend**: Node.js, Express.js, Prisma ORM
+- **Database**: MySQL
+- **Authentication**: JWT (JSON Web Tokens) & bcrypt password hashing
